@@ -18,6 +18,19 @@
             strictEqual(el.tabIndex, -1);
         },
         
+        initDouble: function() {
+            var el;
+            
+            $fixture.append('<input id=test1 />');
+            
+            $('#test1').qcTimepicker();
+            $('#test1').qcTimepicker();
+            
+            el = document.getElementById('test1');
+            
+            strictEqual(el.parentNode.children.length - 1, 1);
+        },
+        
         initValue: function() {
             var qc;
             

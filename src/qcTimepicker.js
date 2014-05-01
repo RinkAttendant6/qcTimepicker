@@ -154,7 +154,12 @@
             }
             
             return this.filter('input').each(function() {
-                var that = this, tSelect = select.cloneNode(true), labels, placeholderOpt;
+                var that = this, tSelect = select.cloneNode(true), labels = $('label[for="' + that.id + '"]');
+                
+                // Prevent double-instantiation
+                if(that.getAttribute('data-qctimepicker-id')) {
+                    return;
+                }
                 
                 // Copy over current value if possible
                 setTime(that.value, tSelect);
@@ -181,7 +186,6 @@
                 }
                 
                 // Change label references if necessary
-                labels = $('label[for="' + that.id + '"]');
                 if(labels.length) {
                     $.each(labels, function(i, v) {
                         v.htmlFor = that.id + '-qcTimepicker';
