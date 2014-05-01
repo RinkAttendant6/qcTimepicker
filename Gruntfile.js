@@ -14,6 +14,7 @@ module.exports = function(grunt) {
         },
         uglify: {
             options: {
+                banner: '/*! <%= pkg.name %> - v<%= pkg.version %> | (c) <%= grunt.template.today("yyyy") %> <%= pkg.author %>. | Licensed under the Mozilla Public License, version 2.0 */',
                 sourceMap: true,
                 preserveComments: 'some',
                 mangle: {

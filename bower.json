@@ -3,12 +3,17 @@
   "authors": [
     "Vincent Diep"
   ],
+  "license": "MPL-2.0",
   "description": "A simple dropdown time picker",
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/RinkAttendant6/qcTimepicker.git"
+  },
   "main": "src/qcTimepicker.js",
   "dependencies": {
-    "jquery": ">=1.6.0"
+    "jquery": ">=1.2"
   },
-  "private": true,
+  "private": false,
   "ignore": [
     "**/.*",
     "node_modules",
