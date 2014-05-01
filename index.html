@@ -1,22 +1,19 @@
 <!DOCTYPE html>
 <html lang=en-CA>
     <meta charset=utf-8>
-    <script src=lib/jquery/dist/jquery.js></script>
     <title>qcTimepicker</title>
+    <style>
+        html, body, iframe {
+            border: 0;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        html, body {
+            overflow: hidden;
+        }
+    </style>
     <body>
-
-        <h1>qcTimepicker</h1>
-        <form>
-            <p>
-                <label for='start'>Start time:</label> <input class='timepicker' id='start' required>
-                End: <input class='timepicker'>
-            </p>
-            
-        </form>
-
-        <script src=src/qcTimepicker.js charset=utf-8></script>
-        <script>
-            $(document).ready(function() {
-                $('.timepicker').qcTimepicker();
-            });
-        </script>
+        <iframe seamless src=Demo/demo.html role=document></iframe>

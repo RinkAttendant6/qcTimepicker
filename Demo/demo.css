@@ -1,0 +1,24 @@
+:root {
+    font-family: 'Segoe UI', Ubuntu, Tahoma, Arial, sans-serif;
+    background-color: #06b;
+}
+
+body {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0 auto;
+    width: 90%;
+    background-color: #fff;
+    padding: 1em;
+    border: 0 solid #000;
+    border-width: 0 medium;
+    position: relative;
+}
+
+#github-ribbon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: 0;
+}

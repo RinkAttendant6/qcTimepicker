@@ -1,0 +1,7 @@
+---
+ name: qcTimepicker Demo
+ authors:
+   - Vincent Diep
+ resources:
+   - https://cdn.rawgit.com/RinkAttendant6/qcTimepicker/master/build/qcTimepicker.min.js
+...
