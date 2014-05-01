@@ -21,7 +21,9 @@ debugging purposes.
 
 Load the plugin by including the script on the page:
 
-    <script src='path/to/qcTimepicker.min.js' charset='utf-8'></script>
+```html
+<script src='path/to/qcTimepicker.min.js' charset='utf-8'></script>
+```
 
 Alternatively, you may use a preloader such as Modernizr to load the plugin.
 
@@ -30,7 +32,9 @@ Alternatively, you may use a preloader such as Modernizr to load the plugin.
 Initialize the plugin by calling the `.qcTimepicker()` function on a jQuery
 object:
 
-    $('.timepickers').qcTimepicker();
+```js
+$('.timepickers').qcTimepicker();
+```
 
 Please note that only `input` elements will be initialized.
 
@@ -42,22 +46,26 @@ the newly created dropdown element.
 Options can be set during the initialization process by passing in an object
 as a parameter:
 
-    $('.timepickers').qcTimepicker({
-        step: '0:15'
-    });
+```js
+$('.timepickers').qcTimepicker({
+    step: '0:15'
+});
+```
 
 ### classes
 
-Type: string or Array
-Default: '' (empty string)
+**Type:** string or Array
+
+**Default:** '' (empty string)
 
 If specified, the class(es) will be applied to the each of the dropdowns
 created by qcTimepicker.
 
 ### format
 
-Type: string
-Default: 'H:mm'
+**Type:** string
+
+**Default:** 'H:mm'
 
 The format of the time as displayed in the dropdown.
 [ICU symbols](http://userguide.icu-project.org/formatparse/datetime) are used
@@ -69,8 +77,9 @@ backslash. Currently, output strings cannot contain backslashes.
 
 ### minTime
 
-Type: string or Date
-Default: '00:00:00' (midnight)
+**Type:** string or Date
+
+**Default:** '00:00:00' (midnight)
 
 The minimum time (lower-bound of range) in the dropdown. The value must be
 specified as a string in 24-hour format or as a Date object. If a string is
@@ -94,24 +103,27 @@ Awkward times will be converted if possible:
 
 ### maxTime
 
-Type: string or Date
-Default: '23:59:59'
+**Type:** string or Date
+
+**Default:** '23:59:59'
 
 The maximum time (upper-bound of range) in the dropdown. See `minTime` for
 format.
 
 ### step
 
-Type: string
-Default: '0:30:00' (30 minutes)
+**Type:** string
+
+**Default:** '0:30:00' (30 minutes)
 
 The intervals of time displayed in the dropdown. See `minTime` for format (Date
 objects are not permitted here.)
 
 ### placeholder
 
-Type: string
-Default: The text of an input element's `placeholder` attribute, if not present,
+**Type:** string
+
+**Default:** The text of an input element's `placeholder` attribute, if not present,
 a hyphen will be displayed.
 
 The text to display in the placeholder option. This is the first option
@@ -124,12 +136,16 @@ containing an empty value.
 The visibility of the dropdown can be toggled by calling qcTimepicker with the
 parameters `'show'` and `'hide'`, respectively.
 
-    $('input').qcTimepicker('show');
-    $('input').qcTimepicker('hide');
+```js
+$('input').qcTimepicker('show');
+$('input').qcTimepicker('hide');
+```
 
 ### Destroy
 
 To uninstantiate qcTimepicker and restore the original input, call qcTimepicker
 with the `'destroy'` parameter:
 
-    $('input').qcTimepicker('destroy');
+```js
+$('input').qcTimepicker('destroy');
+```
