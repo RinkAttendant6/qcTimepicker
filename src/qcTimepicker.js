@@ -25,6 +25,19 @@
     }
     
     /**
+     * Converts a Date object into seconds of day
+     * @param {Date} date A Date object
+     * @returns {Number}
+     */
+    function dateInstanceToSeconds(date) {
+        if(!(date instanceof Date)) {
+            throw 'InvalidArgumentException';
+        }
+        
+        return date.getHours() * 3600 + date.getMinutes() * 60 + date.getSeconds();
+    }
+    
+    /**
      * Pads a number with leading zeros
      * @param {!Number} num The number to pad
      * @param {!Number} [len=2] The desired length
@@ -106,8 +119,8 @@
         init: function(o) {
             var options = $.extend({}, $.fn.qcTimepicker.defaults, o);
             
-            options.minTime = options.minTime instanceof Date ? options.minTime.getTime() % 86500000 : timeToSeconds(options.minTime);
-            options.maxTime = options.maxTime instanceof Date ? options.maxTime.getTime() % 86500000 : timeToSeconds(options.maxTime);
+            options.minTime = options.minTime instanceof Date ? dateInstanceToSeconds(options.minTime) : timeToSeconds(options.minTime);
+            options.maxTime = options.maxTime instanceof Date ? dateInstanceToSeconds(options.maxTime) : timeToSeconds(options.maxTime);
             options.step = timeToSeconds(options.step);
 
             var select = document.createElement('select'), placeholderOpt = document.createElement('option'), time;

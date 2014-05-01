@@ -92,6 +92,27 @@
             strictEqual(qc.children.length, (17 - 9) * 2 + 1 + 1);
         },
         
+        rangeDateObject: function() {
+            var qc, d1 = new Date(2014, 4, 1, 9, 0, 0), d2 = new Date(2014, 4, 1, 17, 0, 0);
+            
+            $fixture.append('<input id=test1 />');
+            
+            $('#test1').qcTimepicker({
+                minTime: d1,
+                maxTime: d2
+            });
+            
+            qc = document.getElementById('test1-qcTimepicker');
+            
+            strictEqual(qc.children[1].innerHTML, '9:00');
+            strictEqual(qc.children[1].value, '09:00:00');
+            strictEqual(qc.children[2].innerHTML, '9:30');
+            strictEqual(qc.children[2].value, '09:30:00');
+            strictEqual(qc.lastChild.innerHTML, '17:00');
+            strictEqual(qc.lastChild.value, '17:00:00');
+            strictEqual(qc.children.length, (17 - 9) * 2 + 1 + 1);
+        },
+        
         rangeGoofy: function() {
             var qc;
             
