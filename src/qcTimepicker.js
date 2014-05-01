@@ -120,7 +120,7 @@
                     $.each(options.classes, function(i, v) {
                         select.className += ' ' + v;
                     });
-                    select.className = select.className.trim();
+                    select.className = $.trim(select.className);
                 } else if(typeof options.classes === 'string') {
                     select.className = options.classes;
                 }
