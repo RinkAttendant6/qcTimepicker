@@ -43,6 +43,18 @@
             strictEqual(qc.value, '13:30:00');
         },
         
+        initInputTimeValue: function() {
+            var qc;
+            
+            $fixture.append('<input type=time value=15:00:00 id=test1 />');
+            
+            $('#test1').qcTimepicker();
+            
+            qc = document.getElementById('test1-qcTimepicker');
+            
+            strictEqual(qc.value, '15:00:00');
+        },
+        
         initRequired: function() {
             var qc, dummyInput = document.createElement('input');
             if(typeof dummyInput.required === 'undefined') {
@@ -375,6 +387,27 @@
             var el, qc;
             
             $fixture.append('<input id=test1 />');
+            
+            $('#test1').qcTimepicker();
+            
+            el = document.getElementById('test1');
+            qc = document.getElementById('test1-qcTimepicker');
+            
+            strictEqual(el.value, '');
+            
+            // Test changing dropdown
+            $('#test1-qcTimepicker').val('14:00:00').trigger('change');
+            strictEqual(el.value, '14:00:00');
+            
+            // Test changing original input (programmatically)
+            $('#test1').val('15:00:00').trigger('change');
+            strictEqual(qc.value, '15:00:00');
+        },
+        
+        inputTimeChange: function() {
+            var el, qc;
+            
+            $fixture.append('<input type=time id=test1 />');
             
             $('#test1').qcTimepicker();
             
