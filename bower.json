@@ -1,0 +1,18 @@
+{
+  "name": "qcTimepicker",
+  "authors": [
+    "Vincent Diep"
+  ],
+  "description": "A simple dropdown time picker",
+  "main": "src/qcTimepicker.js",
+  "dependencies": {
+    "jquery": ">=1.6.0"
+  },
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "lib",
+    "test"
+  ]
+}

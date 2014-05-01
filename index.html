@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang=en-CA>
+    <meta charset=utf-8>
+    <script src=lib/jquery/dist/jquery.js></script>
+    <title>qcTimepicker</title>
+    <body>
+
+        <h1>qcTimepicker</h1>
+        <form>
+            <p>
+                <label for='start'>Start time:</label> <input class='timepicker' id='start' required>
+                End: <input class='timepicker'>
+            </p>
+            
+        </form>
+
+        <script src=src/qcTimepicker.js charset=utf-8></script>
+        <script>
+            $(document).ready(function() {
+                $('.timepicker').qcTimepicker();
+            });
+        </script>

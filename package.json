@@ -1,0 +1,17 @@
+{
+  "name": "qcTimepicker",
+  "private": false,
+  "author": "Vincent Diep",
+  "dependencies": {
+    "jquery": ">=1.6.0"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.0",
+    "grunt-contrib-connect": "*",
+    "grunt-contrib-jshint": "*",
+    "grunt-contrib-uglify": "*",
+    "grunt-contrib-qunit": "*",
+    "matchdep": "*",
+    "test": "~0.6.0"
+  }
+}
