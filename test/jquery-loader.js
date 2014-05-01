@@ -21,5 +21,4 @@
     }
 
     document.write('<script src="' + file + '"></script>');
-
 }());
