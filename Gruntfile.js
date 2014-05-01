@@ -1,6 +1,11 @@
 /*jslint node: true */
 module.exports = function(grunt) {
     'use strict';
+    
+    var switchjQuery = function (version) {
+        return 'http://localhost:<%= connect.server.options.port %>/test/index.html?jquery=' + version;
+    };
+    
     require("matchdep").filterDev("grunt-*").forEach(grunt.loadNpmTasks);
 
     grunt.initConfig({
@@ -51,16 +56,17 @@ module.exports = function(grunt) {
         qunit: {
             all: {
                 options: {
-                    urls: ['latest', '2.0.3', '1.11.0', '1.10.2', '1.9.1', '1.8.3', '1.7.2', '1.6.4', '1.5.2', '1.4.4', '1.3.2', '1.2.6'].map(function(version) {
-                        return 'http://localhost:<%= connect.server.options.port %>/test/index.html?jquery=' + version;
-                    })
+                    urls: ['latest', '2.0.3', '1.11.0', '1.10.2', '1.9.1', '1.8.3', '1.7.2', '1.6.4', '1.5.2', '1.4.4', '1.3.2', '1.2.6'].map(switchjQuery)
                 }
             },
             latest: {
                 options: {
-                    urls: ['latest', '1.11.0'].map(function(version) {
-                        return 'http://localhost:<%= connect.server.options.port %>/test/index.html?jquery=' + version;
-                    })
+                    urls: ['latest', '1.11.0'].map(switchjQuery)
+                }
+            },
+            travis: {
+                options: {
+                    urls: ['2.1.0', '2.0.3', '1.11.0', '1.10.2', '1.9.1', '1.8.3', '1.7.2', '1.6.4', '1.5.2', '1.4.4', '1.3.2', '1.2.6'].map(switchjQuery)
                 }
             }
         }
@@ -69,6 +75,7 @@ module.exports = function(grunt) {
     grunt.registerTask('deploy', ['uglify']);
     grunt.registerTask('default', ['uglify', 'jshint']);
     grunt.registerTask('test', ['connect', 'jshint', 'qunit:all']);
+    grunt.registerTask('travis', ['connect', 'jshint', 'qunit:travis']);
     grunt.registerTask('quicktest', ['connect', 'jshint', 'qunit:latest']);
 
 };
