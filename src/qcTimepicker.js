@@ -78,23 +78,28 @@
             'H': time.hours + '',
             'kk': padNumber(time.hours + 1),
             'k': time.hours + 1 + '',
-            'KK': padNumber(time.hours % 12),
-            'K': time.hours % 12 + '',
+            'KK': padNumber(time.hours % 12 + 1),
+            'K': time.hours % 12 + 1 + '',
             'mm': padNumber(time.minutes),
             'm': time.minutes + '',
             'ss': padNumber(time.seconds),
             's': time.seconds + '',
             'A': seconds * 1000 + '',
             'a': seconds < 43200 ? 'am' : 'pm'
-        }, symbol;
+        }, symbol, regexCallback;
+        
+        regexCallback = function($0, $1, $2) {
+            return $1 ? $0 : data[$2];
+        };
         
         for (symbol in data) {
             if (data.hasOwnProperty(symbol)) {
-                format = format.replace(new RegExp(symbol, 'g'), data[symbol]);
+                format = format.replace(new RegExp('(\\\\)?(' + symbol + ')', 'g'), regexCallback);
             }
         }
         
-        return format;
+        // Strip slashes
+        return format.replace(/\\/g, '');
     }
     
     /**
