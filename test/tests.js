@@ -377,6 +377,40 @@
             // Test changing original input (programmatically)
             $('#test1').val('15:00:00').trigger('change');
             strictEqual(qc.value, '15:00:00');
+        },
+        
+        format: function() {
+            var testFunction = function(format) {
+                $fixture.html('<input id=test1 />');
+                
+                $('#test1').qcTimepicker({
+                    format: format,
+                    minTime: '00:01:09',
+                    maxTime: '00:01:09'
+                });
+                
+                return document.getElementById('test1-qcTimepicker').lastChild.innerHTML;
+            };
+            
+            var testFormats = {
+                'h:m:s a': '12:1:9 am',
+                'hh:mm:ss a': '12:01:09 am',
+                'H:m:s': '0:1:9',
+                'HH:mm:ss': '00:01:09',
+                'k:m:s': '1:1:9',
+                'kk:mm:ss': '01:01:09',
+                'K:m:s a': '1:1:9 am',
+                'KK:mm:ss a': '01:01:09 am',
+                'A': '69000',
+                '\\aa\\h': 'aamh',
+                '\\\\': '',
+                '\\mm': 'm1',
+                '\\m\\m': 'mm'
+            };
+            
+            $.each(testFormats, function(k, v) {
+                strictEqual(testFunction(k), v);
+            });
         }
     };
     
