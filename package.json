@@ -5,8 +5,8 @@
   "private": false,
   "author": "Vincent Diep",
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/RinkAttendant6/qcTimepicker.git"
+    "type": "git",
+    "url": "https://github.com/RinkAttendant6/qcTimepicker.git"
   },
   "license": "MPL-2.0",
   "dependencies": {
@@ -18,7 +18,8 @@
     "grunt-contrib-jshint": "*",
     "grunt-contrib-uglify": "*",
     "grunt-contrib-qunit": "*",
-    "matchdep": "*"
+    "matchdep": "*",
+    "grunt-contrib-copy": "~0.5.0"
   },
   "scripts": {
     "test": "grunt travis --verbose"
