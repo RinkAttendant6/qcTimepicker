@@ -1,9 +1,12 @@
 # qcTimepicker
 
-Simple jQuery dropdown timepicker. Small (3.62 KiB minified), accessible, and
-highly customizable.
+Simple jQuery dropdown timepicker. Small, accessible, and highly customizable.
 
 [**Demo**](http://jsfiddle.net/gh/get/jquery/edge/RinkAttendant6/qcTimepicker/tree/master/Demo)
+
+[![License MPL-2.0](https://img.shields.io/badge/license-MPL--2.0-yellowgreen.svg)](https://github.com/RinkAttendant6/qcTimepicker/blob/master/LICENSE)
+[![Build Status](https://travis-ci.org/RinkAttendant6/qcTimepicker.svg?branch=master)](https://travis-ci.org/RinkAttendant6/qcTimepicker)
+[![GitTip](https://img.shields.io/gittip/RinkAttendant6.svg)](https://www.gittip.com/RinkAttendant6/)
 
 ## Installation
 
