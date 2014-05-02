@@ -1,6 +1,6 @@
 {
   "name": "qcTimepicker",
-  "description": "A simple dropdown time picker",
+  "description": "A lightweight, accessible, highly customizable dropdown time picker jQuery plugin.",
   "version": "1.0.0",
   "private": false,
   "author": "Vincent Diep",
