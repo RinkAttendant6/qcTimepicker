@@ -23,7 +23,7 @@ $(document).ready(function() {
         minTime: '8:30',
         maxTime: '15:30',
         step: '0:90',
-        format: 'h:mm::ss a'
+        format: 'h:mm:ss a'
     });
 
     $('.timepicker', '#demo-placeholder').qcTimepicker({
