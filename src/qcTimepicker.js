@@ -240,7 +240,18 @@
         
         valueAsDate: function() {
             var input = this.filter('input[data-qctimepicker-id]')[0];
+            if (input.value === '') {
+                return null;
+            }
             return input.valueAsDate || (new Date('Thu, 1 Jan 1970 ' + input.value + ' GMT'));
+        },
+        
+        valueAsNumber: function() {
+            var input = this.filter('input[data-qctimepicker-id]')[0];
+            if (input.value === '') {
+                return Number.NaN;
+            }
+            return input.type === 'time' ? input.valueAsNumber : Date.parse('Thu, 1 Jan 1970 ' + input.value + ' GMT');
         }
     };
     

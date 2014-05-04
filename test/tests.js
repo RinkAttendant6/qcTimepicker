@@ -460,25 +460,83 @@
         },
         
         valueAsDate: function() {
-            var v1, v2, d1, d2, dummyInput = document.createElement('input');
+            var values, dates, v, dummyInput = document.createElement('input');
             
             $fixture.append('<input class=time id=test1 />');
-            $fixture.append('<input type=time class=time id=test2 />');
+            $fixture.append('<input class=time id=test2 type=time />');
+            $fixture.append('<input class=time id=test3 />');
+            $fixture.append('<input class=time id=test4 value=00:00:00 />');
+            $fixture.append('<input class=time id=test5 type=time value=23:59:00 />');
             
             $('.time').qcTimepicker();
             
             $('#test1-qcTimepicker').val('14:00:00').trigger('change');
             $('#test2-qcTimepicker').val('17:30:00').trigger('change');
             
-            v1 = $('#test1').qcTimepicker('valueAsDate');
-            d1 = new Date('Thu, 1 Jan 1970 14:00:00 GMT');
-            v2 = $('#test2').qcTimepicker('valueAsDate');
+            values = {
+                '1': $('#test1').qcTimepicker('valueAsDate'),
+                '2': $('#test2').qcTimepicker('valueAsDate'),
+                '3': $('#test3').qcTimepicker('valueAsDate'),
+                '4': $('#test4').qcTimepicker('valueAsDate'),
+                '5': $('#test5').qcTimepicker('valueAsDate')
+            };
             
-            // Test for native support
-            d2 = (typeof dummyInput.valueAsDate === 'object' && dummyInput.valueAsDate instanceof Date) ? document.getElementById('test2').valueAsDate : (new Date('Thu, 1 Jan 1970 17:30:00 GMT'));
+            dates = {
+                '1': new Date('Thu, 1 Jan 1970 14:00:00 GMT'),
+                
+                // Test for native support
+                '2': (typeof dummyInput.valueAsDate === 'object' && dummyInput.valueAsDate instanceof Date) ? document.getElementById('test2').valueAsDate : (new Date('Thu, 1 Jan 1970 17:30:00 GMT')),
+                
+                '3': null,
+                '4': new Date('Thu, 1 Jan 1970 00:00:00 GMT'),
+                '5': new Date('Thu, 1 Jan 1970 23:59:00 GMT')
+            };
             
-            strictEqual(v1.getTime(), d1.getTime());
-            strictEqual(v2.getTime(), d2.getTime());
+            for (v in values) {
+                if (values.hasOwnProperty(v)) {
+                    deepEqual(values[v], dates[v]);
+                }
+            }
+        },
+        
+        valueAsNumber: function() {
+            var values, dates, v, dummyInput = $('<input type=time />')[0];
+            
+            $fixture.append('<input class=time id=test1 />');
+            $fixture.append('<input class=time id=test2 type=time />');
+            $fixture.append('<input class=time id=test3 />');
+            $fixture.append('<input class=time id=test4 value=00:00:00 />');
+            $fixture.append('<input class=time id=test5 type=time value=23:59:00 />');
+            
+            $('.time').qcTimepicker();
+            
+            $('#test1-qcTimepicker').val('14:00:00').trigger('change');
+            $('#test2-qcTimepicker').val('17:30:00').trigger('change');
+            
+            values = {
+                '1': $('#test1').qcTimepicker('valueAsNumber'),
+                '2': $('#test2').qcTimepicker('valueAsNumber'),
+                '3': $('#test3').qcTimepicker('valueAsNumber'),
+                '4': $('#test4').qcTimepicker('valueAsNumber'),
+                '5': $('#test5').qcTimepicker('valueAsNumber')
+            };
+            
+            dates = {
+                '1': Date.parse('Thu, 1 Jan 1970 14:00:00 GMT'),
+                
+                // Test for native support
+                '2': (dummyInput.type === 'time' && typeof dummyInput.valueAsNumber === 'number') ? document.getElementById('test2').valueAsNumber : Date.parse('Thu, 1 Jan 1970 17:30:00 GMT'),
+                
+                '3': Number.NaN,
+                '4': Date.parse('Thu, 1 Jan 1970 00:00:00 GMT'),
+                '5': Date.parse('Thu, 1 Jan 1970 23:59:00 GMT')
+            };
+            
+            for (v in values) {
+                if (values.hasOwnProperty(v)) {
+                    deepEqual(dates[v], values[v]);
+                }
+            }
         }
     };
     
