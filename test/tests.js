@@ -457,6 +457,28 @@
             $.each(testFormats, function(k, v) {
                 strictEqual(testFunction(k), v);
             });
+        },
+        
+        valueAsDate: function() {
+            var v1, v2, d1, d2, dummyInput = document.createElement('input');
+            
+            $fixture.append('<input class=time id=test1 />');
+            $fixture.append('<input type=time class=time id=test2 />');
+            
+            $('.time').qcTimepicker();
+            
+            $('#test1-qcTimepicker').val('14:00:00').trigger('change');
+            $('#test2-qcTimepicker').val('17:30:00').trigger('change');
+            
+            v1 = $('#test1').qcTimepicker('valueAsDate');
+            d1 = new Date('Thu, 1 Jan 1970 14:00:00 GMT');
+            v2 = $('#test2').qcTimepicker('valueAsDate');
+            
+            // Test for native support
+            d2 = (typeof dummyInput.valueAsDate === 'object' && dummyInput.valueAsDate instanceof Date) ? document.getElementById('test2').valueAsDate : (new Date('Thu, 1 Jan 1970 17:30:00 GMT'));
+            
+            strictEqual(v1.getTime(), d1.getTime());
+            strictEqual(v2.getTime(), d2.getTime());
         }
     };
     
