@@ -173,6 +173,13 @@
                     setTime(this.value, tSelect);
                 };
                 
+                // If input is time, copy over properties as required
+                if (that.type === 'time') {
+                    that.step = options.step;
+                    that.min = formatTime('HH:mm:ss', options.minTime);
+                    that.max = formatTime('HH:mm:ss', options.maxTime);
+                }
+                
                 // If input is required
                 tSelect.required = (that.required || that.getAttribute('required') === 'required');
                 
@@ -251,7 +258,33 @@
             if (input.value === '') {
                 return Number.NaN;
             }
-            return input.valueAsNumber || Date.parse('Thu, 1 Jan 1970 ' + input.value + ' GMT');
+            return input.type === 'time' ? input.valueAsNumber : Date.parse('Thu, 1 Jan 1970 ' + input.value + ' GMT');
+        },
+        
+        stepUp: function() {
+            return this.filter('input[data-qctimepicker-id]').each(function() {
+                var el = document.getElementById(this.getAttribute('data-qctimepicker-id'));
+                
+                if (this.value === '' || el.selectedIndex === 0 || el.selectedIndex === el.children.length - 1) {
+                    throw 'InvalidStateError';
+                }
+                
+                el.selectedIndex += 1;
+                $(el).trigger('change');
+            }).end();
+        },
+        
+        stepDown: function() {
+            return this.filter('input[data-qctimepicker-id]').each(function() {
+                var el = document.getElementById(this.getAttribute('data-qctimepicker-id'));
+                
+                if (this.value === '' || el.selectedIndex <= 1) {
+                    throw 'InvalidStateError';
+                }
+                
+                el.selectedIndex -= 1;
+                $(el).trigger('change');
+            }).end();
         }
     };
     
