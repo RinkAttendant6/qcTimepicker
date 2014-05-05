@@ -55,6 +55,59 @@
             strictEqual(qc.value, '15:00:00');
         },
         
+        initInputTimeRange: function() {
+            var i, qc = [];
+            
+            $fixture.append('<input id=test1 type=time min=08:00:00 />');
+            $fixture.append('<input id=test2 type=time max=16:00:00 />');
+            $fixture.append('<input id=test3 type=time min=08:00:00 max=16:00:00 />');
+            $fixture.append('<input id=test4 type=time min=foo max=02:00:00 />');
+            $fixture.append('<input id=test5 type=time min=23:00:00 max=foo />');
+            $fixture.append('<input id=test6 type=time max=08:00:00 min=16:00:00 />');
+            $fixture.append('<input id=test7 type=time min=25:00:00 />');
+            $fixture.append('<input id=test8 type=time min=-2 />');
+            $fixture.append('<input id=test9 type=time min=9 />');
+            $fixture.append('<input id=test10 type=time min=foo />');
+            $fixture.append('<input id=test11 type=time min=foo max=bar />');
+            $fixture.append('<input id=test12 type=time min="" />');
+            
+            $fixture.append('<input id=test13 type=time min=08:00:00 max=16:00:00 />');
+            
+            for (i = 1; i <= 12; i += 1) {
+                $('#test' + i).qcTimepicker();
+                qc[i] = document.getElementById('test' + i + '-qcTimepicker');
+            }
+            
+            $('#test13').qcTimepicker({
+                minTime: '7:30',
+                maxTime: '16:30'
+            });
+            qc[13] = document.getElementById('test13-qcTimepicker');
+            
+            strictEqual(qc[1].children[1].value, '08:00:00');
+            strictEqual(qc[1].lastChild.value, '23:30:00');
+            
+            strictEqual(qc[2].children[1].value, '00:00:00');
+            strictEqual(qc[2].lastChild.value, '16:00:00');
+            
+            strictEqual(qc[3].children[1].value, '08:00:00');
+            strictEqual(qc[3].lastChild.value, '16:00:00');
+            
+            strictEqual(qc[4].children[1].value, '00:00:00');
+            strictEqual(qc[4].lastChild.value, '02:00:00');
+            
+            strictEqual(qc[5].children[1].value, '23:00:00');
+            strictEqual(qc[5].lastChild.value, '23:30:00');
+            
+            for (i = 7; i <= 12; i += 1) {
+                strictEqual(qc[i].children[1].value, '00:00:00');
+                strictEqual(qc[i].lastChild.value, '23:30:00');
+            }
+            
+            strictEqual(qc[13].children[1].value, '08:00:00');
+            strictEqual(qc[13].lastChild.value, '16:00:00');
+        },
+        
         initRequired: function() {
             var qc, dummyInput = document.createElement('input');
             if(typeof dummyInput.required === 'undefined') {

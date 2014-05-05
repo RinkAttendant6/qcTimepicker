@@ -7,14 +7,24 @@
      * @type Number
      */
     var i = 0;
+    
+    function validPartialTime(t) {
+        return /^([0-1]?[0-9]|[2][0-3]):([0-5][0-9])(:([0-5][0-9]))?$/.test(t);
+    }
 
     /**
      * Converts a partial time into seconds of day
-     * @param {!String} t A partial time as defined by RFC 3339
+     * @param {String} t A partial time as defined by RFC 3339
+     * @param {Boolean} [strict=false] Whether malformed partial times are accepted
      * @returns {Number}
      */
-    function timeToSeconds(t) {
-        if(!/^\d+(:\d+){0,2}$/.test(t)) {
+    function timeToSeconds(t, strict) {
+        var regex;
+        
+        strict = strict || false;
+        regex = (strict ? /^([0-1]?[0-9]|[2][0-3]):([0-5][0-9])(:([0-5][0-9]))?$/ : /^\d+(:\d+){0,2}$/);
+        
+        if (!regex.test(t)) {
             throw 'InvalidArgumentException';
         }
         
@@ -122,39 +132,59 @@
      */
     var methods = {
         init: function(o) {
-            var options = $.extend({}, $.fn.qcTimepicker.defaults, o);
-            
-            options.minTime = options.minTime instanceof Date ? dateInstanceToSeconds(options.minTime) : timeToSeconds(options.minTime);
-            options.maxTime = options.maxTime instanceof Date ? dateInstanceToSeconds(options.maxTime) : timeToSeconds(options.maxTime);
-            options.step = timeToSeconds(options.step);
+            var select = document.createElement('select'),
+                placeholderOpt = document.createElement('option');
 
-            var select = document.createElement('select'), placeholderOpt = document.createElement('option'), time;
             placeholderOpt.value = '';
             select.appendChild(placeholderOpt);
             
-            // Add classes
-            if(options.classes) {
-                if(typeof options.classes === 'object' && options.classes instanceof Array) {
-                    $.each(options.classes, function(i, v) {
-                        select.className += ' ' + v;
-                    });
-                    select.className = $.trim(select.className);
-                } else if(typeof options.classes === 'string') {
-                    select.className = options.classes;
-                }
-            }
-            
-            // Generate options
-            for(time = options.minTime; time <= options.maxTime; time += options.step) {
-                var opt = document.createElement('option');
-                opt.innerHTML = formatTime(options.format, time);
-                opt.value = formatTime('HH:mm:ss', time);
-                
-                select.appendChild(opt);
-            }
-            
             return this.filter('input').each(function() {
-                var that = this, tSelect = select.cloneNode(true), labels = $('label[for="' + that.id + '"]');
+                var that = this,
+                    tSelect = select.cloneNode(true),
+                    opt,
+                    labels = $('label[for="' + that.id + '"]'),
+                    options, time;
+                    
+                options = $.extend({}, $.fn.qcTimepicker.defaults, o);
+                options.step = timeToSeconds(options.step);
+            
+                // Add classes
+                if(options.classes) {
+                    if(typeof options.classes === 'object' && options.classes instanceof Array) {
+                        $.each(options.classes, function(i, v) {
+                            tSelect.className += ' ' + v;
+                        });
+                        tSelect.className = $.trim(tSelect.className);
+                    } else if(typeof options.classes === 'string') {
+                        tSelect.className = options.classes;
+                    }
+                }
+                
+                // Take into account max and min attributes where present
+                if ((that.min || that.getAttribute('min')) && validPartialTime(that.min || that.getAttribute('min'))) {
+                    options.minTime = timeToSeconds(that.min || that.getAttribute('min'), true);
+                } else if (options.minTime instanceof Date) {
+                    options.minTime = dateInstanceToSeconds(options.minTime);
+                } else {
+                    options.minTime = timeToSeconds(options.minTime);
+                }
+                
+                if ((that.max || that.getAttribute('max')) && validPartialTime(that.max || that.getAttribute('max'))) {
+                    options.maxTime = timeToSeconds(that.max || that.getAttribute('max'), true);
+                } else if (options.maxTime instanceof Date) {
+                    options.maxTime = dateInstanceToSeconds(options.maxTime);
+                } else {
+                    options.maxTime = timeToSeconds(options.maxTime);
+                }
+
+                // Generate options
+                for(time = options.minTime; time <= options.maxTime; time += options.step) {
+                    opt = document.createElement('option');
+                    opt.innerHTML = formatTime(options.format, time);
+                    opt.value = formatTime('HH:mm:ss', time);
+
+                    tSelect.appendChild(opt);
+                }
                 
                 // Prevent double-instantiation
                 if(that.getAttribute('data-qctimepicker-id')) {
