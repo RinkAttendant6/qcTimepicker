@@ -323,9 +323,14 @@
             $fixture.append('<input id=test2 />');
             $fixture.append('<input id=test3 placeholder=foo />');
             $fixture.append('<input id=test4 />');
+            $fixture.append('<input id=test5 type=time data-placeholder=foo />');
+            $fixture.append('<input id=test6 type=time />');
+            $fixture.append('<input id=test7 type=time data-placeholder=foo />');
+            $fixture.append('<input id=test8 type=time />');
+            $fixture.append('<input id=test9 data-placeholder=foo placeholder=bar />');
             
-            $('#test1, #test2').qcTimepicker();
-            $('#test3, #test4').qcTimepicker({
+            $('#test1, #test2, #test5, #test6').qcTimepicker();
+            $('#test3, #test4, #test7, #test8, #test9').qcTimepicker({
                 placeholder: 'bar'
             });
             
@@ -333,6 +338,11 @@
             strictEqual(document.getElementById('test2-qcTimepicker').firstChild.innerHTML, $.fn.qcTimepicker.defaults.placeholder);
             strictEqual(document.getElementById('test3-qcTimepicker').firstChild.innerHTML, 'foo');
             strictEqual(document.getElementById('test4-qcTimepicker').firstChild.innerHTML, 'bar');
+            strictEqual(document.getElementById('test5-qcTimepicker').firstChild.innerHTML, 'foo');
+            strictEqual(document.getElementById('test6-qcTimepicker').firstChild.innerHTML, $.fn.qcTimepicker.defaults.placeholder);
+            strictEqual(document.getElementById('test7-qcTimepicker').firstChild.innerHTML, 'foo');
+            strictEqual(document.getElementById('test8-qcTimepicker').firstChild.innerHTML, 'bar');
+            strictEqual(document.getElementById('test9-qcTimepicker').firstChild.innerHTML, 'foo');
         },
         
         hide: function() {

@@ -214,7 +214,7 @@
                 tSelect.required = (that.required || that.getAttribute('required') === 'required');
                 
                 // Placeholder
-                tSelect.firstChild.innerHTML = that.getAttribute('placeholder') || options.placeholder;
+                tSelect.firstChild.innerHTML = that.dataset.placeholder || that.getAttribute('data-placeholder') || that.placeholder || that.getAttribute('placeholder') || options.placeholder;
                 
                 if(that.id) {
                     tSelect.id = that.id + '-qcTimepicker';
