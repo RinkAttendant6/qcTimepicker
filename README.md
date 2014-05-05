@@ -152,3 +152,64 @@ with the `'destroy'` parameter:
 ```js
 $('input').qcTimepicker('destroy');
 ```
+
+### Step (increment and decrement)
+
+To programatically increment or decrement the value in accordance with the
+`step`, call qcTimepicker with the `stepUp` or `stepDown` parameters,
+respectively.
+
+This behaviour is consistent with the methods
+[`stepUp`](https://www.w3.org/TR/html51/forms.html#dom-input-stepup) and 
+[`stepDown`](https://http://www.w3.org/TR/html51/forms.html#dom-input-stepdown)
+on the [`HTMLInputElement`](https://developer.mozilla.org/en/docs/Web/API/HTMLInputElement)
+interface.
+
+```html
+<input value='08:00:00'>
+```
+
+```js
+$('input').qcTimepicker({
+    step: '02:00:00'
+});
+
+$('input').qcTimepicker('stepUp');
+$('input').val() // returns 10:00:00
+
+$('input').qcTimepicker('stepDown');
+// Time is now back to 8:00
+$('input').val() // returns 08:00:00
+```
+
+### Numeric and date values
+
+qcTimepicker supports retrieving the time value as a number or a JavaScript
+Date object. In the case of a number, the value returned is in milliseconds.
+
+This behaviour is consistent with the properties
+[`valueAsNumber`](https://www.w3.org/TR/html51/forms.html#dom-input-valueasnumber)
+and [`valueAsDate`](https://www.w3.org/TR/html51/forms.html#dom-input-valueasdate)
+on the [`HTMLInputElement`](https://developer.mozilla.org/en/docs/Web/API/HTMLInputElement)
+interface.
+
+```html
+<input value='08:00:00'>
+```
+
+```js
+$('input').qcTimepicker();
+
+// As a number
+var foo = $('input').qcTimepicker('valueAsNumber');
+console.log(foo); // outputs 28800000
+
+// As a Date
+var bar = $('input').qcTimepicker('valueAsDate');
+
+// The string output above differs based on your computer's current time zone
+console.log(bar); // outputs Thu Jan 01 1970 03:00:00 GMT-0500 (Eastern Standard Time)
+
+// Call getTime() or valueOf() for a primitive value
+console.log(bar.getTime()); // outputs 28800000
+```
