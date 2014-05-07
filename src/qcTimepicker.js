@@ -146,6 +146,12 @@
                     options, time;
                     
                 options = $.extend({}, $.fn.qcTimepicker.defaults, o);
+                
+                // Prevent double-instantiation
+                if(that.getAttribute('data-qctimepicker-id')) {
+                    return;
+                }
+                
                 options.step = timeToSeconds(options.step);
             
                 // Add classes
@@ -184,11 +190,6 @@
                     opt.value = formatTime('HH:mm:ss', time);
 
                     tSelect.appendChild(opt);
-                }
-                
-                // Prevent double-instantiation
-                if(that.getAttribute('data-qctimepicker-id')) {
-                    return;
                 }
                 
                 // Copy over current value if possible
