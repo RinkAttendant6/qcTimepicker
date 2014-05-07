@@ -28,7 +28,7 @@ module.exports = function(grunt) {
             },
             build: {
                 files: {
-                    'build/qcTimepicker.min.js': ['src/qcTimepicker.js']
+                    'build/qcTimepicker.min.js': ['build/qcTimepicker.js']
                 }
             }
         },
@@ -69,11 +69,21 @@ module.exports = function(grunt) {
                     urls: ['2.1.0', '2.0.3', '1.11.0', '1.10.2', '1.9.1', '1.8.3', '1.7.2', '1.6.4', '1.5.2', '1.4.4', '1.3.2', '1.2.6'].map(switchjQuery)
                 }
             }
+        },
+        copy: {
+            main: {
+                expand: true,
+                cwd: 'src/',
+                src: '*',
+                dest: 'build/',
+                flatten: true,
+                filter: 'isFile'
+            }
         }
     });
 
-    grunt.registerTask('deploy', ['uglify']);
-    grunt.registerTask('default', ['uglify', 'jshint']);
+    grunt.registerTask('deploy', ['copy', 'uglify']);
+    grunt.registerTask('default', ['copy', 'uglify', 'jshint']);
     grunt.registerTask('test', ['connect', 'jshint', 'qunit:all']);
     grunt.registerTask('travis', ['connect', 'jshint', 'qunit:travis']);
     grunt.registerTask('quicktest', ['connect', 'jshint', 'qunit:latest']);
