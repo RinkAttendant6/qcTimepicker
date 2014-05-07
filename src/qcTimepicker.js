@@ -4,7 +4,7 @@
     
     /**
      * Autoincrement number for inputs without identifiers
-     * @type Number
+     * @type number
      */
     var i = 0;
     
@@ -14,9 +14,9 @@
 
     /**
      * Converts a partial time into seconds of day
-     * @param {String} t A partial time as defined by RFC 3339
-     * @param {Boolean} [strict=false] Whether malformed partial times are accepted
-     * @returns {Number}
+     * @param {string} t A partial time as defined by RFC 3339
+     * @param {boolean} [strict=false] Whether malformed partial times are accepted
+     * @returns {number}
      */
     function timeToSeconds(t, strict) {
         var regex;
@@ -36,8 +36,8 @@
     
     /**
      * Converts a Date object into seconds of day
-     * @param {Date} date A Date object
-     * @returns {Number}
+     * @param {!Date} date A Date object
+     * @returns {number}
      */
     function dateInstanceToSeconds(date) {
         if(!(date instanceof Date)) {
@@ -49,9 +49,9 @@
     
     /**
      * Pads a number with leading zeros
-     * @param {!Number} num The number to pad
-     * @param {!Number} [len=2] The desired length
-     * @returns {String} The padded number
+     * @param {(number|string)} num The number to pad
+     * @param {number} [len=2] The desired length
+     * @returns {string} The padded number
      */
     function padNumber(num, len) {
         len = len || 2;
@@ -68,9 +68,9 @@
     
     /**
      * Formats a time according to ICU formats
-     * @param {String} format The format to use
-     * @param {(!Number|!String)} seconds The seconds of the day
-     * @returns {Object}
+     * @param {string} format The format to use
+     * @param {(number|string)} seconds The seconds of the day
+     * @returns {string}
      */
     function formatTime(format, seconds) {
         seconds = Number(seconds);
@@ -114,8 +114,8 @@
     
     /**
      * Sets the time of a dropdown
-     * @param {String} time A partial-time as defined by RFC 3339
-     * @param {HTMLSelectElement} dropdown The timepicker element
+     * @param {string} time A partial-time as defined by RFC 3339
+     * @param {!HTMLSelectElement} dropdown The timepicker element
      */
     function setTime(time, dropdown) {
         if($(dropdown.children).filter(function() {
@@ -128,7 +128,7 @@
     
     /**
      * Methods available to qcTimepicker
-     * @type Object.<String, function>
+     * @type Object.<string, function(...[object])>
      */
     var methods = {
         init: function(o) {
@@ -320,7 +320,7 @@
     
     /**
      * Calls to qcTimepicker
-     * @param {(String|Object)} args
+     * @param {(string|Object)=} args
      */
     $.fn.qcTimepicker = function(args) {
     
@@ -338,14 +338,15 @@
     
     /**
      * Default options
+     * @struct
      */
     $.fn.qcTimepicker.defaults = {
-        'classes': '',
-        'format': 'H:mm',
-        'minTime': '0:00:00',
-        'maxTime': '23:59:59',
-        'step': '0:30:00',
-        'placeholder': '-'
+        classes: '',
+        format: 'H:mm',
+        minTime: '0:00:00',
+        maxTime: '23:59:59',
+        step: '0:30:00',
+        placeholder: '-'
     };
     
 }(jQuery));
