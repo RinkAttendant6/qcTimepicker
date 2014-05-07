@@ -55,6 +55,21 @@
             strictEqual(qc.value, '15:00:00');
         },
         
+        initDisabled: function() {
+            var i;
+            
+            $fixture.append('<input class=time id=test1 readonly />');
+            $fixture.append('<input class=time id=test2 disabled />');
+            $fixture.append('<input class=time id=test3 type=time readonly />');
+            $fixture.append('<input class=time id=test4 type=time disabled />');
+            
+            $('.time').qcTimepicker();
+            
+            for (i = 1; i <= 4; i += 1) {
+                ok(document.getElementById('test' + i + '-qcTimepicker').disabled);
+            }
+        },
+        
         initInputTimeRange: function() {
             var i, qc = [];
             

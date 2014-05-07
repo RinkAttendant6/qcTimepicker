@@ -214,6 +214,9 @@
                 // If input is required
                 tSelect.required = (that.required || that.getAttribute('required') === 'required');
                 
+                // If input is disabled or readonly
+                tSelect.disabled = that.readOnly || that.disabled;
+                
                 // Placeholder
                 tSelect.firstChild.innerHTML = (that.dataset ? that.dataset.placeholder : false) || that.getAttribute('data-placeholder') || that.placeholder || that.getAttribute('placeholder') || options.placeholder;
                 

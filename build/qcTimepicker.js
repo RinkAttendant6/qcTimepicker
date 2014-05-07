@@ -146,6 +146,12 @@
                     options, time;
                     
                 options = $.extend({}, $.fn.qcTimepicker.defaults, o);
+                
+                // Prevent double-instantiation
+                if(that.getAttribute('data-qctimepicker-id')) {
+                    return;
+                }
+                
                 options.step = timeToSeconds(options.step);
             
                 // Add classes
@@ -186,11 +192,6 @@
                     tSelect.appendChild(opt);
                 }
                 
-                // Prevent double-instantiation
-                if(that.getAttribute('data-qctimepicker-id')) {
-                    return;
-                }
-                
                 // Copy over current value if possible
                 setTime(that.value, tSelect);
                     
@@ -213,8 +214,11 @@
                 // If input is required
                 tSelect.required = (that.required || that.getAttribute('required') === 'required');
                 
+                // If input is disabled or readonly
+                tSelect.disabled = that.readOnly || that.disabled;
+                
                 // Placeholder
-                tSelect.firstChild.innerHTML = that.dataset.placeholder || that.getAttribute('data-placeholder') || that.placeholder || that.getAttribute('placeholder') || options.placeholder;
+                tSelect.firstChild.innerHTML = (that.dataset ? that.dataset.placeholder : false) || that.getAttribute('data-placeholder') || that.placeholder || that.getAttribute('placeholder') || options.placeholder;
                 
                 if(that.id) {
                     tSelect.id = that.id + '-qcTimepicker';
