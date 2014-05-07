@@ -22,3 +22,15 @@ body {
     right: 0;
     border: 0;
 }
+
+code {
+    font-family: Consolas, monospace;
+    font-size: 0.9em;
+    margin: auto 0.125em;
+    padding: 0 0.25em;
+    background-color: #e6e6e6;
+}
+
+.small {
+    font-size: 0.8em;
+}

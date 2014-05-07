@@ -24,17 +24,21 @@
 
         <section id='demo-custom-range'>
             <h3>Custom time range</h3>
+            
+            <p>The <code>min</code> and <code>max</code> attributes on the element restricts the range.</p>
 
             <p>
-                <label for='demo-custom-range-1'>Afternoon:</label> <input type='time' class='timepicker' id='demo-custom-range-1' required>
+                <label for='demo-custom-range-1'>Afternoon:</label> <input type='time' class='timepicker' id='demo-custom-range-1' required min='08:30' max='15:30'>
             </p>
         </section>
 
         <section id='demo-custom-intervals'>
             <h3>Custom intervals</h3>
+            
+            <p>The <code>step</code> attribute on the element defines the intervals between times.</p>
 
             <p>
-                <label for='demo-custom-intervals-1'>Hour-and-a-half:</label> <input type='time' class='timepicker' id='demo-custom-intervals-1' required>
+                <label for='demo-custom-intervals-1'>Hour-and-a-half:</label> <input type='time' class='timepicker' id='demo-custom-intervals-1' required min='08:30' max='15:30' step='5400'>
             </p>
         </section>
 
@@ -42,18 +46,19 @@
             <h3>Output formats</h3>
 
             <p>
-                <label for='demo-custom-formats-1'>12-hour:</label> <input type='time' class='timepicker' id='demo-custom-formats-1' required>
-                <label for='demo-custom-formats-2'>12-hour with seconds:</label> <input type='time' class='timepicker' id='demo-custom-formats-2' required>
+                <label for='demo-custom-formats-1'>12-hour:</label> <input type='time' class='timepicker' id='demo-custom-formats-1' required min='08:30' max='15:30' step='5400'>
+                <label for='demo-custom-formats-2'>12-hour with seconds:</label> <input type='time' class='timepicker' id='demo-custom-formats-2' required min='08:30' max='15:30' step='5400'>
             </p>
         </section>
 
         <section id='demo-placeholder'>
             <h3>Placeholder</h3>
 
-            <p>In accordance with the HTML5 specification, the <code>placeholder</code> attribute must not be specified on an <code>input</code> element of type <code>time</code>.</p>
-
+            <p>Use the <code>data-placeholder</code> attribute to specify the text of the first (placeholder) element.</p>
+            <p class='small'>(In accordance with the HTML5 specification, the <code>placeholder</code> attribute must not be specified on an <code>input</code> element of type <code>time</code>.)</p>
+            
             <p>
-                <label hidden for='demo-placeholder-1' style='display: none;'>Choose a time:</label> <input class='timepicker' id='demo-placeholder-1' required placeholder='Choose a time…'>
+                <label hidden for='demo-placeholder-1' style='display: none;'>Choose a time:</label> <input type='time' class='timepicker' id='demo-placeholder-1' required data-placeholder='Choose a time…' min='08:30' max='15:30' step='5400'>
             </p>
         </section>
     </section>
