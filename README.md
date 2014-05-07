@@ -44,6 +44,9 @@ $('.timepickers').qcTimepicker();
 
 Please note that only `input` elements will be initialized.
 
+It is strongly recommended that the input elements have the type `time`,
+although all inputs that match the selector will be initialized.
+
 Labels that are associated with the affected `input` element will be mapped to
 the newly created dropdown element.
 
@@ -54,7 +57,7 @@ as a parameter:
 
 ```js
 $('.timepickers').qcTimepicker({
-    step: '0:15'
+    step: 900
 });
 ```
 
@@ -107,6 +110,13 @@ Awkward times will be converted if possible:
   - '11:90:87' => '12:31:27'
   - '28:30:00' => '04:30:00'
 
+Ignored if a `min` attribute is specified on the element of initialization.
+
+**If the `min` attribute in the HTML is used, the value MUST be specified in
+the official format: `HH:mm:ss` (Hours and minutes separated by colons,
+optionally followed by a colon and number of seconds. Leading zeros are
+required on all parts.)**
+
 ### maxTime
 
 **Type:** string or Date
@@ -116,14 +126,23 @@ Awkward times will be converted if possible:
 The maximum time (upper-bound of range) in the dropdown. See `minTime` for
 format.
 
+Ignored if a `max` attribute is specified on the element of initialization.
+
+**If the `max` attribute in the HTML is used, the value MUST be specified in
+the official format: `HH:mm:ss` (Hours and minutes separated by colons,
+optionally followed by a colon and number of seconds. Leading zeros are
+required on all parts.)**
+
 ### step
 
-**Type:** string
+**Type:** number
 
-**Default:** '0:30:00' (30 minutes)
+**Default:** 1800 (30 minutes)
 
-The intervals of time displayed in the dropdown. See `minTime` for format (Date
-objects are not permitted here.)
+The intervals of time displayed in the dropdown. The value represents the
+number of seconds between each interval.
+
+Ignored if a `step` attribute is specified on the element of initialization.
 
 ### placeholder
 
@@ -134,6 +153,9 @@ a hyphen will be displayed.
 
 The text to display in the placeholder option. This is the first option
 containing an empty value.
+
+Ignored if a `data-placeholder` attribute or `placeholder` attribute is
+specified on the element of initialization.
 
 ## Methods
 
