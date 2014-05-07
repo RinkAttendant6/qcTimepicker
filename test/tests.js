@@ -70,6 +70,28 @@
             }
         },
         
+        initInputTimeStep: function() {
+            var qc, i;
+            
+            $fixture.append('<input class=time id=test1 type=time step=7200 />');
+            $fixture.append('<input class=time id=test2 type=time step=0 />');
+            $fixture.append('<input class=time id=test3 type=time step=-1 />');
+            $fixture.append('<input class=time id=test4 type=time step=foo />');
+            $fixture.append('<input class=time id=test5 type=time step />');
+            
+            $('.time').qcTimepicker();
+            
+            qc = document.getElementById('test1-qcTimepicker');
+            
+            strictEqual(qc.children[2].value, '02:00:00');
+            strictEqual(qc.lastChild.value, '22:00:00');
+            
+            for (i = 2; i <= 5; i += 1) {
+                strictEqual(document.getElementById('test' + i + '-qcTimepicker').children[2].value, '00:30:00');
+            }
+            
+        },
+        
         initInputTimeRange: function() {
             var i, qc = [];
             
@@ -255,7 +277,7 @@
             
             $fixture.append('<input id=test1 />');
             $('#test1').qcTimepicker({
-                step: '0:15'
+                step: 900
             });
             
             qc = document.getElementById('test1-qcTimepicker');
@@ -274,7 +296,7 @@
             $('#test1').qcTimepicker({
                 minTime: '9',
                 maxTime: '16:50',
-                step: '0:15'
+                step: 900
             });
             
             qc = document.getElementById('test1-qcTimepicker');
@@ -286,31 +308,32 @@
         },
         
         stepInvalid: function() {
+            var i;
+            
             $fixture.append('<input id=test1 />');
+            $fixture.append('<input id=test2 />');
+            $fixture.append('<input id=test3 />');
+            $fixture.append('<input id=test4 />');
             
-            throws(function() {
-                $('#test1').qcTimepicker({
-                    step: -0.3
-                });
-            }, 'InvalidArgumentException');
+            $('#test1').qcTimepicker({
+                step: -0.3
+            });
             
-            throws(function() {
-                $('#test1').qcTimepicker({
-                    step: 'foo'
-                });
-            }, 'InvalidArgumentException');
+            $('#test2').qcTimepicker({
+                step: 'foo'
+            });
             
-            throws(function() {
-                $('#test1').qcTimepicker({
-                    step: null
-                });
-            }, 'InvalidArgumentException');
+            $('#test3').qcTimepicker({
+                step: null
+            });
             
-            throws(function() {
-                $('#test1').qcTimepicker({
-                    step: '2:-1:-0'
-                });
-            }, 'InvalidArgumentException');
+            $('#test4').qcTimepicker({
+                step: '2:-1:-0'
+            });
+            
+            for (i = 1; i <= 4; i += 1) {
+                strictEqual(document.getElementById('test' + i + '-qcTimepicker').children[2].value, '00:30:00');
+            }
         },
         
         label: function() {
@@ -657,7 +680,7 @@
             $fixture.append('<input class=time id=test5 value=22:00:00 />');
             
             $('.time').qcTimepicker({
-                step: '02:00:00'
+                step: 7200
             });
             
             el2 = document.getElementById('test2');
@@ -751,7 +774,7 @@
             $fixture.append('<input class=time id=test5 value=00:00:00 />');
             
             $('.time').qcTimepicker({
-                step: '02:00:00'
+                step: 7200
             });
             
             el2 = document.getElementById('test2');

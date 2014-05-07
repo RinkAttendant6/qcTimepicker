@@ -151,8 +151,6 @@
                 if(that.getAttribute('data-qctimepicker-id')) {
                     return;
                 }
-                
-                options.step = timeToSeconds(options.step);
             
                 // Add classes
                 if(options.classes) {
@@ -181,6 +179,16 @@
                     options.maxTime = dateInstanceToSeconds(options.maxTime);
                 } else {
                     options.maxTime = timeToSeconds(options.maxTime);
+                }
+
+                // Take into account step attribute where present
+                options.step = Number(that.step) ||
+                               (that.getAttribute('step') ? Number(that.getAttribute('step')) : null) ||
+                               (that.step === 'any' || that.getAttribute('step') === 'any' ? 1 : null) ||
+                               options.step;
+                
+                if (typeof options.step !== 'number' || isNaN(options.step) || options.step <= 0 || options.step % 1 !== 0) {
+                    options.step = $.fn.qcTimepicker.defaults.step;
                 }
 
                 // Generate options
@@ -349,7 +357,7 @@
         format: 'H:mm',
         minTime: '0:00:00',
         maxTime: '23:59:59',
-        step: '0:30:00',
+        step: 1800,
         placeholder: '-'
     };
     
