@@ -1,0 +1,20 @@
+{
+    "name": "qcTimepicker",
+    "version": "1.1.0",
+    "title": "qcTimepicker",
+    "author": {
+        "name": "Vincent Diep"
+    },
+    "licenses": [{
+        "type": "MPL-2.0",
+        "url": "https://www.mozilla.org/MPL/2.0/index.txt"
+    }],
+    "dependencies":  {
+        "jquery": ">=1.2"
+    },
+    "description": "A lightweight, accessible, highly customizable dropdown time picker jQuery plugin.",
+    "homepage": "https://github.com/RinkAttendant6/qcTimepicker",
+    "docs": "http://documentup.com/RinkAttendant6/qcTimepicker",
+    "demo": "http://jsfiddle.net/gh/get/jquery/edge/RinkAttendant6/qcTimepicker/tree/master/Demo",
+    "bugs": "https://github.com/RinkAttendant6/qcTimepicker/issues"
+}

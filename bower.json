@@ -18,6 +18,7 @@
     "**/.*",
     "node_modules",
     "lib",
+    "src",
     "test",
     "Gruntfile.js",
     "index.html",
