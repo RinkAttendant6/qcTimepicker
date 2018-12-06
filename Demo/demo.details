@@ -3,5 +3,5 @@
  authors:
    - Vincent Diep
  resources:
-   - https://cdn.rawgit.com/RinkAttendant6/qcTimepicker/v1.1.0/build/qcTimepicker.min.js
+   - https://cdn.jsdelivr.net/gh/RinkAttendant6/qcTimepicker@v1.1.0/build/qcTimepicker.min.js
 ...
