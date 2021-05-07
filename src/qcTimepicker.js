@@ -1,5 +1,6 @@
-(function($) {
-    'use strict';
+'use strict';
+
+import $ from 'jquery';
     
     /**
      * Autoincrement number for inputs without identifiers
@@ -359,5 +360,3 @@
         step: 1800,
         placeholder: '-'
     };
-    
-}(jQuery));

@@ -2,6 +2,7 @@
   "name": "qcTimepicker",
   "description": "A lightweight, accessible, highly customizable dropdown time picker jQuery plugin.",
   "version": "1.1.0",
+  "browser": "dist/qcTimepicker.min.js",
   "private": false,
   "author": "Vincent Diep",
   "repository": {
@@ -15,14 +16,15 @@
   "devDependencies": {
     "eslint": "^7.25.0",
     "eslint-plugin-qunit": "^6.1.0",
-    "grunt": "^1.0",
-    "grunt-contrib-copy": "~0.5.0",
-    "grunt-contrib-uglify": "*",
-    "matchdep": "*",
     "node-qunit-puppeteer": "^2.0.3",
-    "qunit": "^2.15.0"
+    "qunit": "^2.15.0",
+    "rollup": "^2.47.0",
+    "rollup-plugin-clear": "^2.0.7",
+    "rollup-plugin-copy": "^3.4.0",
+    "rollup-plugin-terser": "^7.0.2"
   },
   "scripts": {
+    "build": "rollup --config",
     "lint": "eslint src/*.js",
     "test": "node test/index.mjs"
   }
