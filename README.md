@@ -2,7 +2,7 @@
 
 Simple jQuery dropdown timepicker. Small, accessible, and highly customizable.
 
-[**Demo**](https://jsfiddle.net/gh/get/jquery/edge/RinkAttendant6/qcTimepicker/tree/master/Demo)
+[**Demo**](https://rinkattendant6.github.io/qcTimepicker/)
 
 [**Documentation**](https://documentup.com/RinkAttendant6/qcTimepicker)
 
