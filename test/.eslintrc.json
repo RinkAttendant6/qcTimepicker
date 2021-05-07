@@ -1,0 +1,13 @@
+{
+    "env": {
+        "browser": true,
+        "jquery": true,
+        "node": true,
+        "qunit": true
+    },
+    "extends": "plugin:qunit/recommended",
+    "parserOptions": {
+        "ecmaVersion": 12,
+        "sourceType": "module"
+    }
+}

@@ -1,4 +1,3 @@
-/*jshint devel: true, jquery: true */
 ;(function($) {
     'use strict';
     

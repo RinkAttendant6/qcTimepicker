@@ -1,5 +1,4 @@
-/*jshint devel: true, jquery: true */
-;(function($) {
+(function($) {
     'use strict';
     
     /**
@@ -103,7 +102,7 @@
         };
         
         for (symbol in data) {
-            if (data.hasOwnProperty(symbol)) {
+            if (Object.prototype.hasOwnProperty.call(data, symbol)) {
                 format = format.replace(new RegExp('(\\\\)?(' + symbol + ')', 'g'), regexCallback);
             }
         }
@@ -281,8 +280,8 @@
             return this.filter('input[data-qctimepicker-id]').each(function() {
                 var el = document.getElementById(this.getAttribute('data-qctimepicker-id'));
                 
-                if(o.hasOwnProperty('required')) {
-                    el.required = o.required;
+                if ('required' in o) {
+                    el.required = Boolean(o.required);
                 }
             }).end();
         },

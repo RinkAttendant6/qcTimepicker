@@ -1,4 +1,3 @@
-/*jshint jquery: true */
 (($) => {
     'use strict';
     
@@ -150,7 +149,7 @@
             var qc, dummyInput = document.createElement('input');
             if(typeof dummyInput.required === 'undefined') {
                 // Can't test feature in unsupported browsers
-                expect(0);
+                assert.expect(0);
                 return;
             }
             
