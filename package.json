@@ -10,18 +10,19 @@
   },
   "license": "MPL-2.0",
   "dependencies": {
-    "jquery": ">=1.2"
+    "jquery": "^1.2"
   },
   "devDependencies": {
-    "grunt": "~0.4.0",
+    "grunt": "^1.0",
     "grunt-contrib-connect": "*",
+    "grunt-contrib-copy": "~0.5.0",
     "grunt-contrib-jshint": "*",
     "grunt-contrib-uglify": "*",
-    "grunt-contrib-qunit": "*",
     "matchdep": "*",
-    "grunt-contrib-copy": "~0.5.0"
+    "node-qunit-puppeteer": "^2.0.3",
+    "qunit": "^2.15.0"
   },
   "scripts": {
-    "test": "grunt travis --verbose"
+    "test": "node test/index.mjs"
   }
 }

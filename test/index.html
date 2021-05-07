@@ -1,18 +1,14 @@
 <!DOCTYPE html>
 <html lang=en-CA>
     <meta charset=utf-8>
-    <link rel=stylesheet href=qunit/qunit-1.14.0.css>
-    <script src=qunit/qunit-1.14.0.js></script>
-    <!--[if !IE]><!-->
-    <script src=qunit/blanket.min.js></script>
-    <!--<![endif]-->
-    
-    <script src=jquery-loader.js></script>
+    <link rel=stylesheet href=../node_modules/qunit/qunit/qunit.css>
     <title>qcTimepicker</title>
     <body>
         
         <div id=qunit></div>
         <div id=qunit-fixture></div>
 
-        <script src=../src/qcTimepicker.js charset=utf-8 data-cover></script>
+        <script src=../node_modules/qunit/qunit/qunit.js></script>
+        <script src=../node_modules/jquery/dist/jquery.min.js></script>
+        <script src=../src/qcTimepicker.js data-cover></script>
         <script src=tests.js></script>
