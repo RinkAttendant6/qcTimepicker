@@ -1,5 +1,6 @@
-;(function($) {
-    'use strict';
+'use strict';
+
+import $ from 'jquery';
     
     /**
      * Autoincrement number for inputs without identifiers
@@ -102,7 +103,7 @@
         };
         
         for (symbol in data) {
-            if (data.hasOwnProperty(symbol)) {
+            if (Object.prototype.hasOwnProperty.call(data, symbol)) {
                 format = format.replace(new RegExp('(\\\\)?(' + symbol + ')', 'g'), regexCallback);
             }
         }
@@ -280,8 +281,8 @@
             return this.filter('input[data-qctimepicker-id]').each(function() {
                 var el = document.getElementById(this.getAttribute('data-qctimepicker-id'));
                 
-                if(o.hasOwnProperty('required')) {
-                    el.required = o.required;
+                if ('required' in o) {
+                    el.required = Boolean(o.required);
                 }
             }).end();
         },
@@ -359,5 +360,3 @@
         step: 1800,
         placeholder: '-'
     };
-    
-}(jQuery));

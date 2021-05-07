@@ -17,9 +17,7 @@ Simple jQuery dropdown timepicker. Small, accessible, and highly customizable.
 
 ### Manually
 
-Download the qcTimepicker.min.js file in the `build/` directory. Optionally
-download the source map file and unminified code (in the `src/` directory for 
-debugging purposes.
+Download the files in the `dist/` directory.
 
 ## Usage
 
@@ -28,8 +26,6 @@ Load the plugin by including the script on the page:
 ```html
 <script src='path/to/qcTimepicker.min.js' charset='utf-8'></script>
 ```
-
-Alternatively, you may use a preloader such as Modernizr to load the plugin.
 
 ## Initialization
 
