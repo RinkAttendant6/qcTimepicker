@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.2
+
+- * Change build system from Grunt to Rollup
+- * Change lint tool from JSHint to ESLint
+- * Update development dependencies
+- * Remove jQuery plugin metadata
+
 ## 1.1
 
  - + Add support for properties `valueAsDate` and `valueAsNumber

@@ -1,7 +1,8 @@
 {
   "name": "qcTimepicker",
   "description": "A lightweight, accessible, highly customizable dropdown time picker jQuery plugin.",
-  "version": "1.1.0",
+  "version": "1.2.0",
+  "browser": "dist/qcTimepicker.min.js",
   "private": false,
   "author": "Vincent Diep",
   "repository": {
@@ -10,18 +11,27 @@
   },
   "license": "MPL-2.0",
   "dependencies": {
-    "jquery": ">=1.2"
+    "jquery": "^1.2"
   },
   "devDependencies": {
-    "grunt": "~0.4.0",
-    "grunt-contrib-connect": "*",
-    "grunt-contrib-jshint": "*",
-    "grunt-contrib-uglify": "*",
-    "grunt-contrib-qunit": "*",
-    "matchdep": "*",
-    "grunt-contrib-copy": "~0.5.0"
+    "eslint": "^7.25.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-qunit": "^6.1.0",
+    "husky": "^6.0.0",
+    "lint-staged": "^10.5.4",
+    "node-qunit-puppeteer": "^2.0.3",
+    "prettier": "2.2.1",
+    "qunit": "^2.15.0",
+    "rollup": "^2.47.0",
+    "rollup-plugin-clear": "^2.0.7",
+    "rollup-plugin-copy": "^3.4.0",
+    "rollup-plugin-terser": "^7.0.2"
   },
   "scripts": {
-    "test": "grunt travis --verbose"
+    "build": "rollup --config",
+    "lint": "eslint src/*.js",
+    "prepublish": "npm run build",
+    "test": "node test/index.mjs",
+    "prepare": "husky install"
   }
 }

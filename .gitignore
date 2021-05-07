@@ -1,5 +1,2 @@
-/lib
-/nbproject
+.eslintcache
 node_modules
-
-Thumbs.db

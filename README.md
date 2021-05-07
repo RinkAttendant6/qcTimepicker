@@ -2,14 +2,12 @@
 
 Simple jQuery dropdown timepicker. Small, accessible, and highly customizable.
 
-[**Demo**](http://jsfiddle.net/gh/get/jquery/edge/RinkAttendant6/qcTimepicker/tree/master/Demo)
+[**Demo**](https://rinkattendant6.github.io/qcTimepicker/)
 
-[**Documentation**](http://documentup.com/RinkAttendant6/qcTimepicker)
+[**Documentation**](https://documentup.com/RinkAttendant6/qcTimepicker)
 
 [![License MPL-2.0](https://img.shields.io/badge/license-MPL--2.0-yellowgreen.svg)](https://github.com/RinkAttendant6/qcTimepicker/blob/master/LICENSE)
 [![Build Status](https://travis-ci.org/RinkAttendant6/qcTimepicker.svg?branch=master)](https://travis-ci.org/RinkAttendant6/qcTimepicker)
-[![GitTip](https://img.shields.io/gittip/RinkAttendant6.svg)](https://www.gittip.com/RinkAttendant6/)
-[![githalytics.com alpha](https://cruel-carlota.pagodabox.com/16fd5f6e42cfabd2c8b3feaef47c846f "githalytics.com")](http://githalytics.com/RinkAttendant6/qcTimepicker)
 
 ## Installation
 
@@ -19,9 +17,7 @@ Simple jQuery dropdown timepicker. Small, accessible, and highly customizable.
 
 ### Manually
 
-Download the qcTimepicker.min.js file in the `build/` directory. Optionally
-download the source map file and unminified code (in the `src/` directory for 
-debugging purposes.
+Download the files in the `dist/` directory.
 
 ## Usage
 
@@ -30,8 +26,6 @@ Load the plugin by including the script on the page:
 ```html
 <script src='path/to/qcTimepicker.min.js' charset='utf-8'></script>
 ```
-
-Alternatively, you may use a preloader such as Modernizr to load the plugin.
 
 ## Initialization
 
