@@ -10,19 +10,19 @@
     "url": "https://github.com/RinkAttendant6/qcTimepicker.git"
   },
   "license": "MPL-2.0",
-  "dependencies": {
-    "jquery": "^1.2"
+  "peerDependencies": {
+    "jquery": "^1.2||^2||^3"
   },
   "devDependencies": {
     "eslint": "^7.25.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-qunit": "^6.1.0",
-    "husky": "^6.0.0",
-    "lint-staged": "^10.5.4",
-    "node-qunit-puppeteer": "^2.0.3",
-    "prettier": "2.2.1",
-    "qunit": "^2.15.0",
-    "rollup": "^2.47.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.1.2",
+    "node-qunit-puppeteer": "^2.1.0",
+    "prettier": "2.4.1",
+    "qunit": "^2.17.2",
+    "rollup": "^2.60.1",
     "rollup-plugin-clear": "^2.0.7",
     "rollup-plugin-copy": "^3.4.0",
     "rollup-plugin-terser": "^7.0.2"
