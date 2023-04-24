@@ -18,7 +18,7 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-qunit": "^6.1.0",
     "husky": "^7.0.4",
-    "lint-staged": "^12.1.2",
+    "lint-staged": "^13.2.1",
     "node-qunit-puppeteer": "^2.1.0",
     "prettier": "2.4.1",
     "qunit": "^2.17.2",
