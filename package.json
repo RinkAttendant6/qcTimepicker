@@ -14,13 +14,13 @@
     "jquery": "^1.2||^2||^3"
   },
   "devDependencies": {
-    "eslint": "^7.25.0",
-    "eslint-config-prettier": "^8.3.0",
+    "eslint": "^8.39.0",
+    "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-qunit": "^6.1.0",
     "husky": "^7.0.4",
-    "lint-staged": "^12.1.2",
+    "lint-staged": "^13.2.1",
     "node-qunit-puppeteer": "^2.1.0",
-    "prettier": "2.4.1",
+    "prettier": "2.8.8",
     "qunit": "^2.17.2",
     "rollup": "^2.60.1",
     "rollup-plugin-clear": "^2.0.7",
