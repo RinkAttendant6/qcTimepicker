@@ -17,8 +17,8 @@
     "eslint": "^8.39.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-qunit": "^6.1.0",
-    "husky": "^7.0.4",
-    "lint-staged": "^13.2.1",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.7",
     "node-qunit-puppeteer": "^2.1.0",
     "prettier": "2.8.8",
     "qunit": "^2.17.2",
@@ -32,6 +32,6 @@
     "lint": "eslint src/*.js",
     "prepublish": "npm run build",
     "test": "node test/index.mjs",
-    "prepare": "husky install"
+    "prepare": "husky"
   }
 }
