@@ -19,7 +19,7 @@
     "eslint-plugin-qunit": "^6.1.0",
     "husky": "^9.0.11",
     "lint-staged": "^15.2.7",
-    "node-qunit-puppeteer": "^2.1.0",
+    "node-qunit-puppeteer": "^2.2.1",
     "prettier": "2.8.8",
     "qunit": "^2.17.2",
     "rollup": "^2.60.1",
